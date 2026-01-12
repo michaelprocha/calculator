@@ -14,16 +14,13 @@
     --color-button-result: #7f45e2;
 }
 
-@utility invetado {
-}
-
 @layer base {
     * {
         font-family: "Rubik", sans-serif;
     }
 
     button {
-        @apply cursor-pointer text-2xl border-12 flex justify-center items-center uppercase h-16;
+        @apply cursor-pointer text-2xl rounded-xl flex justify-center items-center uppercase h-16;
     }
 }
 
