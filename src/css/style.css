@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+    --color-main-dark: #807ece;
+    --color-main-light: #8e7ece;
+
+    --color-card: #2d2a37;
+
+    --color-text-result: #ebebeb;
+    --color-text-history: #6b6b6b;
+
+    --color-button-normal: #2d2a37;
+    --color-button-operation: #462878;
+    --color-button-result: #7f45e2;
+}
+
+@utility invetado {
+}
+
+@layer base {
+    * {
+        font-family: "Rubik", sans-serif;
+    }
+
+    button {
+        @apply cursor-pointer text-2xl border-12 flex justify-center items-center uppercase h-16;
+    }
+}
+
+@layer components {
+}
