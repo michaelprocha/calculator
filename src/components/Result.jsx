@@ -1,8 +1,12 @@
 import React from 'react'
+import Equals from '../assets/Equals.svg'
 
-function Result() {
+function Result({children}) {
   return (
-    <div>Result</div>
+    <div className='flex justify-between'>
+      <img src={Equals} alt="Sinal de igual" />
+      <p className='uppercase text-text-result text-4xl'>{children}</p>
+    </div>
   )
 }
 
