@@ -19,9 +19,9 @@
         font-family: "Rubik", sans-serif;
     }
 
-    body{
+    body {
         background: linear-gradient(var(--color-main-dark)), var(--color-main-light);
-        min-height: 100dvh
+        min-height: 100dvh;
     }
 
     button {
@@ -30,4 +30,16 @@
 }
 
 @layer components {
+    .card {
+        @apply bg-card w-89 h-141.5 px-8 pb-8 pt-13.5 flex;
+        box-shadow:
+            0 4px 4px 0 rgba(0, 0, 0, 0.25),
+            0 188px 52px 0 rgba(0, 0, 0, 0.01)
+            0 120px 48px 0 rgba(0, 0, 0, 0.04)
+            0 68px 41px 0 rgba(0, 0, 0, 0.15)
+            0 30px 30px 0 rgba(0, 0, 0, 0.26)
+            0 8px 17px 0 rgba(0, 0, 0, 0.29)
+            inset 0 6px 8px 0 rgba(255,255,255,0.10)
+            inset 0 -4px 5px 0 rgba(0,0,0,0.22);
+    }
 }
