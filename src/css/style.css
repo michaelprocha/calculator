@@ -23,7 +23,7 @@
     }
 
     button {
-        @apply cursor-pointer text-2xl border-12;
+        @apply cursor-pointer text-2xl border-12 flex justify-center items-center uppercase h-16;
     }
 }
 
