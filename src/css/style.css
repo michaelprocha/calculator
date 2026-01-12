@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+
+    --color-main-dark: #807ECE;
+    --color-main-light: #8E7ECE;
+
+    --color-card: #2D2A37;
+
+    --color-text-result: #EBEBEB;
+    --color-text-history: #6B6B6B;
+
+    --color-button-normal: #2D2A37;
+    --color-button-operation: #462878;
+    --color-button-result: #7F45E2;
+}
+
+@utility invetado {
+
+}
+
+@layer base {
+    
+}
+
+@layer components {
+
+}
