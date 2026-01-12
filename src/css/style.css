@@ -19,6 +19,11 @@
         font-family: "Rubik", sans-serif;
     }
 
+    body{
+        background: linear-gradient(var(--color-main-dark)), var(--color-main-light);
+        min-height: 100dvh
+    }
+
     button {
         @apply cursor-pointer text-2xl rounded-xl flex justify-center items-center uppercase h-16;
     }
