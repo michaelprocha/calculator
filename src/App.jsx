@@ -1,4 +1,5 @@
 import Calculator from "./components/Calculator"
+import History from './components/History'
 import Text from "./components/Text"
 import Result from "./components/Result"
 import GroupButtons from "./components/GroupButtons"
@@ -12,10 +13,10 @@ import X from './assets/X.svg'
 function App() {
 
   return (
-    <main>
+    <main className="flex gap-4.5">
       <Calculator>
         <div className="grow flex flex-col gap-2">
-          <Text style='px-4.5 text-right text-xl text-text-history'>1+1</Text>
+          <Text style='tracking-[-0.02em] px-4.5 text-right text-xl text-text-history'>1 + 1</Text>
           <Result>2</Result>
         </div>
         <div className="grow flex flex-col gap-3">
@@ -47,7 +48,7 @@ function App() {
             <Button style="w-15.5 btn-black text-white">2</Button>
             <Button style="w-15.5 btn-black text-white">3</Button>
             <Button style="w-15.5 btn-dark-purple text-white">
-              <img src={Plus} alt="Adição"/>
+              <img src={Plus} alt="Adição" />
             </Button>
           </GroupButtons>
           <GroupButtons>
@@ -59,6 +60,12 @@ function App() {
           </GroupButtons>
         </div>
       </Calculator>
+      <History>
+        <div className="flex flex-col gap-3">
+          <Text style='tracking-[-0.02em] text-xl text-text-result flex items-center'>1 + 4 = 5</Text>
+          <Text style='tracking-[-0.02em] text-xl text-text-result flex items-center'>1 + 4 = 5</Text>
+        </div>
+      </History>
     </main>
   )
 }
