@@ -1,6 +1,6 @@
 function GroupButtons({children}) {
   return (
-    <div className='flex justify-center gap-3'>{children}</div>
+    <div className='max-w-73 flex gap-3.5'>{children}</div>
   )
 }
 
