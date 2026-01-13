@@ -17,7 +17,7 @@ function App() {
       <Calculator>
         <div className="grow flex flex-col gap-2">
           <Text style='tracking-[-0.02em] px-4.5 text-right text-xl text-text-history'>1 + 1</Text>
-          <Result>2</Result>
+          <Result/>
         </div>
         <div className="grow flex flex-col gap-3">
           <GroupButtons>
