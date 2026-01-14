@@ -9,15 +9,99 @@ import Minus from './assets/Minus.svg'
 import Plus from './assets/Plus.svg'
 import ResultImage from './assets/Result.svg'
 import X from './assets/X.svg'
+import { useState } from "react"
 
 function App() {
+
+  const [screen, setScreen] = useState([]);
+
+  const pressInput = (n) => {
+    screen.push(n);
+  };
+
+  const deleteLastInput = () => {
+    if (!screen.length) {
+      screen.pop();
+    }
+  };
+
+  const deleteAllInput = () => {
+    setScreen([])
+  };
+
+  const resultMath = () => {
+    if (!screen.length) {
+      let finalResult = 0;
+      let groupNumber = [];
+      let groupOperation = [];
+      let iNumber = 0;
+      let iOperation = 0;
+      const regexNumber = /^[0-9]$/g;
+      screen.forEach((char, iChar, allChars) => {
+        if (regexNumber.test(char) || char === ',') {
+          if (char === ',') {
+            groupNumber[iNumber] = `${groupNumber[iNumber]}.`
+          }
+          groupNumber[iNumber] = `${groupNumber[iNumber]}${char}`
+        } else {
+          if (allChars.length - 1 !== iChar) {
+            iNumber += 1;
+          }
+          if (!iOperation) {
+            groupOperation[iOperation] = char;
+          } else {
+            iOperation += 1;
+            groupOperation[iOperation] = char;
+          }
+        }
+      });
+      groupOperation.forEach((operation, i) => {
+        if (!i) {
+          switch (operation) {
+            case '+':
+              finalResult = parseInt(groupNumber[i]) + parseInt(groupNumber[i + 1])
+              break;
+            case '-':
+              finalResult = parseInt(groupNumber[i]) - parseInt(groupNumber[i + 1])
+              break;
+            case 'x':
+              finalResult = parseInt(groupNumber[i]) * parseInt(groupNumber[i + 1])
+              break;
+            case '÷':
+              finalResult = parseInt(groupNumber[i]) / parseInt(groupNumber[i + 1])
+              break;
+            default:
+              break;
+          }
+        } else {
+          switch (operation) {
+            case '+':
+              finalResult += parseInt(groupNumber[i + 1])
+              break;
+            case '-':
+              finalResult -= parseInt(groupNumber[i + 1])
+              break;
+            case 'x':
+              finalResult *= parseInt(groupNumber[i + 1])
+              break;
+            case '÷':
+              finalResult /= parseInt(groupNumber[i + 1])
+              break;
+            default:
+              break;
+          }
+        }
+      });
+      setScreen(finalResult);
+    }
+  }
 
   return (
     <main className="flex gap-4.5">
       <Calculator>
         <div className="grow flex flex-col gap-2">
           <Text style='tracking-[-0.02em] px-4.5 text-right text-xl text-text-history'>1 + 1</Text>
-          <Result/>
+          <Result />
         </div>
         <div className="grow flex flex-col gap-3">
           <GroupButtons>
@@ -69,5 +153,4 @@ function App() {
     </main>
   )
 }
-
 export default App
