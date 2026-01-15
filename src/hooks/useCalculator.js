@@ -3,6 +3,7 @@ import { useState } from "react";
 const useCalculator = () => {
 
   const [screen, setScreen] = useState([]);
+  const [lastResult, setLastResult] = useState('');
 
   const pressInput = (n) => {
     setScreen([...screen, n])
@@ -31,9 +32,8 @@ const useCalculator = () => {
       let iOperation = 0;
       const regexNumber = /^[0-9]/;
       const arrayForMath = Array.from(screen);
-      console.log(arrayForMath)
-      console.log(arrayForMath)
-      console.log(groupNumber[iNumber])
+      const forHistorical = screen.join(' ');
+      setLastResult(forHistorical);
       arrayForMath.forEach((char, iChar, allChars) => {
         if (regexNumber.test(char) || char === ',') {
           if (char === ',') {
@@ -61,8 +61,6 @@ const useCalculator = () => {
           }
         }
       });
-      console.log(groupNumber)
-      console.log(groupOperation)
       groupOperation.forEach((operation, i) => {
         if (!i) {
           switch (operation) {
@@ -104,7 +102,7 @@ const useCalculator = () => {
     }
   }
 
-  return [pressInput, deleteLastInput, deleteAllInput, resultMath, screen, setScreen]
+  return [pressInput, deleteLastInput, deleteAllInput, resultMath, screen, setScreen, lastResult]
 }
 
 export default useCalculator;

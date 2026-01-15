@@ -8,7 +8,7 @@ function Result({ screen, setScreen }) {
   const pushNewInput = (e) => {
     const newInput = e.target.value
     console.log(newInput)
-    // const regexNumber = /^[0-9]$/g;
+    // const regexNumber = /^[0-9]/;
     // if (condition) {
       
     // }

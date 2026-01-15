@@ -10,17 +10,30 @@ import Plus from './assets/Plus.svg'
 import ResultImage from './assets/Result.svg'
 import X from './assets/X.svg'
 import useCalculator from "./hooks/useCalculator"
+import { useEffect, useState } from "react"
 
 function App() {
 
-  const [pressInput, deleteLastInput, deleteAllInput, resultMath, screen, setScreen] = useCalculator();
+  const [pressInput, deleteLastInput, deleteAllInput, resultMath, screen, setScreen, lastResult] = useCalculator();
+  const [historical, setHistorical] = useState([])
+
+  useEffect(() => {
+    if (lastResult) {
+      if (historical.length) {
+        const newHistorical = [...historical, lastResult]
+        setHistorical(newHistorical)
+      } else {
+        setHistorical([lastResult])
+      }
+    }
+  }, [lastResult])
 
   return (
     <main className="flex gap-4.5">
       <Calculator>
         <div className="grow flex flex-col gap-2">
-          <Text style='tracking-[-0.02em] px-4.5 text-right text-xl text-text-history'>1 + 1</Text>
-          <Result screen={screen} setScreen={setScreen}/>
+          <Text style='tracking-[-0.02em] px-4.5 text-right text-xl text-text-history'>{lastResult}</Text>
+          <Result screen={screen} setScreen={setScreen} />
         </div>
         <div className="grow flex flex-col gap-3">
           <GroupButtons>
@@ -66,7 +79,9 @@ function App() {
       <History>
         <div className="flex flex-col gap-3">
           <Text style='tracking-[-0.02em] text-xl text-text-result flex items-center'>1 + 4 = 5</Text>
-          <Text style='tracking-[-0.02em] text-xl text-text-result flex items-center'>1 + 4 = 5</Text>
+          {historical.map((item, i) => (
+            <Text key={i} style='tracking-[-0.02em] text-xl text-text-result flex items-center'>{item}</Text>
+          ))}
         </div>
       </History>
     </main>
