@@ -30,6 +30,7 @@ const useCalculator = () => {
       let groupOperation = [];
       let iNumber = 0;
       let iOperation = 0;
+      let oneOperation = true;
       const regexNumber = /^[0-9]/;
       const arrayForMath = Array.from(screen);
       const forHistorical = screen.join(' ');
@@ -39,10 +40,10 @@ const useCalculator = () => {
           if (char === ',') {
             if (groupNumber[iNumber] || groupNumber[iNumber] === 0 || groupNumber[iNumber] === '0') {
               groupNumber[iNumber] = `${groupNumber[iNumber]}.`
-            }else{
+            } else {
               groupNumber[iNumber] = `.`
             }
-          }else{
+          } else {
             if (groupNumber[iNumber] || groupNumber[iNumber] === 0 || groupNumber[iNumber] === '0') {
               groupNumber[iNumber] = `${groupNumber[iNumber]}${char}`
             } else {
@@ -50,11 +51,13 @@ const useCalculator = () => {
             }
           }
         } else {
+  
           if (allChars.length - 1 !== iChar) {
             iNumber += 1;
           }
-          if (!iOperation) {
+          if (oneOperation) {
             groupOperation[iOperation] = char;
+            oneOperation = false;
           } else {
             iOperation += 1;
             groupOperation[iOperation] = char;
@@ -98,7 +101,8 @@ const useCalculator = () => {
           }
         }
       });
-      setScreen([finalResult]);
+      const showResult = String(finalResult).split('')
+      setScreen([...showResult]);
     }
   }
 
