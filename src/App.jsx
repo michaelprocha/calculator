@@ -10,23 +10,12 @@ import Plus from './assets/Plus.svg'
 import ResultImage from './assets/Result.svg'
 import X from './assets/X.svg'
 import useCalculator from "./hooks/useCalculator"
-import { useEffect, useState } from "react"
+import useHistorical from "./hooks/useHistorical"
 
 function App() {
 
   const [pressInput, deleteLastInput, deleteAllInput, resultMath, screen, setScreen, lastResult] = useCalculator();
-  const [historical, setHistorical] = useState([])
-
-  useEffect(() => {
-    if (lastResult) {
-      if (historical.length) {
-        const newHistorical = [...historical, lastResult]
-        setHistorical(newHistorical)
-      } else {
-        setHistorical([lastResult])
-      }
-    }
-  }, [lastResult])
+  const [historical] = useHistorical(lastResult, screen);
 
   return (
     <main className="flex gap-4.5">
@@ -78,7 +67,6 @@ function App() {
       </Calculator>
       <History>
         <div className="flex flex-col gap-3">
-          <Text style='tracking-[-0.02em] text-xl text-text-result flex items-center'>1 + 4 = 5</Text>
           {historical.map((item, i) => (
             <Text key={i} style='tracking-[-0.02em] text-xl text-text-result flex items-center'>{item}</Text>
           ))}

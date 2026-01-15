@@ -10,7 +10,6 @@ function Result({ screen, setScreen }) {
     console.log(newInput)
     // const regexNumber = /^[0-9]/;
     // if (condition) {
-      
     // }
     const chars = newInput.split('')
     console.log(chars)
