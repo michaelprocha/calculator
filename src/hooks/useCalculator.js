@@ -29,20 +29,21 @@ const useCalculator = () => {
       let groupOperation = [];
       let iNumber = 0;
       let iOperation = 0;
-      const regexNumber = /^[0-9]$/g;
+      const regexNumber = /^[0-9]/;
       const arrayForMath = Array.from(screen);
+      console.log(arrayForMath)
       console.log(arrayForMath)
       console.log(groupNumber[iNumber])
       arrayForMath.forEach((char, iChar, allChars) => {
         if (regexNumber.test(char) || char === ',') {
           if (char === ',') {
-            if (groupNumber[iNumber]) {
+            if (groupNumber[iNumber] || groupNumber[iNumber] === 0 || groupNumber[iNumber] === '0') {
               groupNumber[iNumber] = `${groupNumber[iNumber]}.`
             }else{
               groupNumber[iNumber] = `.`
             }
           }else{
-            if (groupNumber[iNumber]) {
+            if (groupNumber[iNumber] || groupNumber[iNumber] === 0 || groupNumber[iNumber] === '0') {
               groupNumber[iNumber] = `${groupNumber[iNumber]}${char}`
             } else {
               groupNumber[iNumber] = `${char}`
